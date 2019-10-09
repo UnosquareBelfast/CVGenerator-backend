@@ -5,21 +5,19 @@ import com.unosquare.cvgenerator.entity.Greeting;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
+@RunWith(SpringRunner.class)
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 public class GreetingServiceImplTest {
 
     @Autowired
@@ -43,7 +41,7 @@ public class GreetingServiceImplTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public void findById_invalid() {
+    public void findById_whenInvalidIdPassed_throwsException() {
         greetingService.findById(2);
     }
 }
