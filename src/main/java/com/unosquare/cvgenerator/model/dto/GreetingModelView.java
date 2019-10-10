@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class GreetingModelView {
 
-    public GreetingModelView() { }
-
     private String greeting;
+
+    public GreetingModelView() { }
 
 }

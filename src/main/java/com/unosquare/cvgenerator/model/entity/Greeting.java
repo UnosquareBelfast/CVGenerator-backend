@@ -13,8 +13,6 @@ import javax.persistence.*;
 @Builder
 public class Greeting {
 
-    public Greeting() { }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -22,5 +20,7 @@ public class Greeting {
 
     @Column(name = "GREETING")
     private String greeting;
+
+    public Greeting() { }
 
 }
