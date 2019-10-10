@@ -1,6 +1,6 @@
 package com.unosquare.cvgenerator.controller;
 
-import com.unosquare.cvgenerator.entity.Greeting;
+import com.unosquare.cvgenerator.model.dto.GreetingModelView;
 import com.unosquare.cvgenerator.service.GreetingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -17,8 +17,8 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String sayHello(Model theModel) {
-        Greeting greeting = greetingService.findById(1);
-        theModel.addAttribute("greeting", greeting);
+        GreetingModelView greetingModelView = greetingService.findById(1);
+        theModel.addAttribute("greeting", greetingModelView);
 
         return "helloworld";
     }

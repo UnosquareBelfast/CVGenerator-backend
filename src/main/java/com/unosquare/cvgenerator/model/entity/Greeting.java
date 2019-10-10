@@ -1,5 +1,7 @@
-package com.unosquare.cvgenerator.entity;
+package com.unosquare.cvgenerator.model.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -7,7 +9,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "hello")
 @Data
+@AllArgsConstructor
+@Builder
 public class Greeting {
+
+    public Greeting() { }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,12 +22,5 @@ public class Greeting {
 
     @Column(name = "GREETING")
     private String greeting;
-
-    public Greeting() { }
-
-    public Greeting(int id, String greeting) {
-        this.id = id;
-        this.greeting = greeting;
-    }
 
 }

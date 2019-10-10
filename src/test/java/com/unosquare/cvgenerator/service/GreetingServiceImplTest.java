@@ -1,11 +1,13 @@
 package com.unosquare.cvgenerator.service;
 
 import com.unosquare.cvgenerator.dao.HelloRepository;
-import com.unosquare.cvgenerator.entity.Greeting;
+import com.unosquare.cvgenerator.model.dto.GreetingModelView;
+import com.unosquare.cvgenerator.model.entity.Greeting;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -29,14 +31,16 @@ public class GreetingServiceImplTest {
     @Test
     public void findById_whenValidIdPassed_returnsDto() {
         // arrange
-        Greeting testGreeting = new Greeting(1, "Hello World!");
+        Greeting testGreeting = Greeting.builder().id(1).greeting("Hello World!").build();
         when(repository.findById(1)).thenReturn(Optional.of(testGreeting));
+        ModelMapper modelMapper = new ModelMapper();
+        GreetingModelView testGMV = modelMapper.map(testGreeting, GreetingModelView.class);
 
         // act
-        Greeting actualGreeting = greetingService.findById(1);
+        GreetingModelView actualGMV = greetingService.findById(1);
 
         // assert
-        Assert.assertEquals(testGreeting, actualGreeting);
+        Assert.assertEquals(testGMV, actualGMV);
         Mockito.verify(repository, times(1)).findById(1);
     }
 
