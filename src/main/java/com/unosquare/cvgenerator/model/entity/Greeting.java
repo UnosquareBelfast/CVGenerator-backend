@@ -3,6 +3,7 @@ package com.unosquare.cvgenerator.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "hello")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Greeting {
 
@@ -20,7 +22,5 @@ public class Greeting {
 
     @Column(name = "GREETING")
     private String greeting;
-
-    public Greeting() { }
 
 }
