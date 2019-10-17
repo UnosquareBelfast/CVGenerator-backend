@@ -34,7 +34,7 @@ public class GreetingServiceImplTest {
     @Test
     public void findById_whenValidIdPassed_returnsDto() {
         // arrange
-        Greeting testGreeting = Greeting.builder().id(1).greeting("Hello World!").build();
+        Greeting testGreeting = new Greeting(1, "Hello World!");
         when(repository.findById(1)).thenReturn(Optional.of(testGreeting));
         GreetingDTO testGMV = modelMapper.map(testGreeting, GreetingDTO.class);
 

@@ -4,6 +4,6 @@ import com.unosquare.cvgenerator.model.dto.GreetingDTO;
 
 public interface GreetingService {
 
-    GreetingDTO findById(int id);
+    GreetingDTO findById(Integer id);
 
 }
