@@ -5,7 +5,7 @@ WORKDIR /project
 COPY build.gradle settings.gradle ./
 COPY src/ src/
 
-CMD gradle clean build --debug
+CMD gradle clean build
 
 
 FROM openjdk:8-jre-alpine
