@@ -5,7 +5,7 @@ WORKDIR /project
 COPY build.gradle settings.gradle ./
 COPY src/ src/
 
-CMD gradle clean build
+RUN gradle clean build -x test -x integTest
 
 
 FROM openjdk:8-jre-alpine
