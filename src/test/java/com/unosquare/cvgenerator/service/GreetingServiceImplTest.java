@@ -1,7 +1,8 @@
 package com.unosquare.cvgenerator.service;
 
 import com.unosquare.cvgenerator.dao.HelloRepository;
-import com.unosquare.cvgenerator.model.dto.GreetingModelView;
+import com.unosquare.cvgenerator.exception.IdNotFoundException;
+import com.unosquare.cvgenerator.model.dto.GreetingDTO;
 import com.unosquare.cvgenerator.model.entity.Greeting;
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,26 +26,28 @@ public class GreetingServiceImplTest {
     @Autowired
     private GreetingService greetingService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @MockBean
     private HelloRepository repository;
 
     @Test
     public void findById_whenValidIdPassed_returnsDto() {
         // arrange
-        Greeting testGreeting = Greeting.builder().id(1).greeting("Hello World!").build();
+        Greeting testGreeting = new Greeting(1, "Hello World!");
         when(repository.findById(1)).thenReturn(Optional.of(testGreeting));
-        ModelMapper modelMapper = new ModelMapper();
-        GreetingModelView testGMV = modelMapper.map(testGreeting, GreetingModelView.class);
+        GreetingDTO testGMV = modelMapper.map(testGreeting, GreetingDTO.class);
 
         // act
-        GreetingModelView actualGMV = greetingService.findById(1);
+        GreetingDTO actualGMV = greetingService.findById(1);
 
         // assert
         Assert.assertEquals(testGMV, actualGMV);
         Mockito.verify(repository, times(1)).findById(1);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IdNotFoundException.class)
     public void findById_whenInvalidIdPassed_throwsException() {
         greetingService.findById(2);
     }

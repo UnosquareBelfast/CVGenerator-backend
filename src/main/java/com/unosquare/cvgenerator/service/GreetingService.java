@@ -1,9 +1,9 @@
 package com.unosquare.cvgenerator.service;
 
-import com.unosquare.cvgenerator.model.dto.GreetingModelView;
+import com.unosquare.cvgenerator.model.dto.GreetingDTO;
 
 public interface GreetingService {
 
-    public GreetingModelView findById(int id);
+    GreetingDTO findById(Integer id);
 
 }
