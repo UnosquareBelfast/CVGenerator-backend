@@ -1,6 +1,7 @@
 package com.unosquare.cvgenerator.service;
 
 import com.unosquare.cvgenerator.dao.HelloRepository;
+import com.unosquare.cvgenerator.exception.IdNotFoundException;
 import com.unosquare.cvgenerator.model.dto.GreetingDTO;
 import com.unosquare.cvgenerator.model.entity.Greeting;
 import org.junit.Assert;
@@ -46,7 +47,7 @@ public class GreetingServiceImplTest {
         Mockito.verify(repository, times(1)).findById(1);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = IdNotFoundException.class)
     public void findById_whenInvalidIdPassed_throwsException() {
         greetingService.findById(2);
     }
