@@ -31,6 +31,7 @@ ext {
 	restAssuredVersion = "3.3.0"
 	modelMapperVersion = "2.3.5"
 	h2databaseVersion = "1.4.199"
+	jsonSimpleVersion = "1.1.1"
 }
 
 dependencies {
@@ -40,6 +41,7 @@ dependencies {
 	compile ("org.springframework.boot:spring-boot-starter-web")
 	compile ("org.modelmapper:modelmapper:$modelMapperVersion")
 	compile ("com.h2database:h2:$h2databaseVersion")
+	compile ("com.googlecode.json-simple:json-simple:$jsonSimpleVersion")
 
 	// compileOnly
 	compileOnly ("org.projectlombok:lombok")
