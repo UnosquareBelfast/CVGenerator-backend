@@ -1,5 +1,14 @@
-CREATE TABLE public.hello (
-	id int4 NOT NULL,
+CREATE SEQUENCE IF NOT EXISTS public.hello_id_seq;
+CREATE TABLE IF NOT EXISTS public.hello
+(
+	id integer NOT NULL DEFAULT nextval('hello_id_seq'::regclass),
 	greeting text NOT NULL,
-	CONSTRAINT helloworld_pkey PRIMARY KEY (id)
-);
+	CONSTRAINT hello_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER SEQUENCE hello_id_seq
+    OWNED BY hello.id;
