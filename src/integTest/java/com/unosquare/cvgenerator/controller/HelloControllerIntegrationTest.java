@@ -11,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-public class HelloControllerTest extends AbstractWebIntegrationTest {
+
+public class HelloControllerIntegrationTest extends AbstractWebIntegrationTest {
 
     @Autowired
     HelloRepository repository;
@@ -25,7 +26,7 @@ public class HelloControllerTest extends AbstractWebIntegrationTest {
     @Test
     public void testSayHello() {
         RestAssured.when()
-                .get("/api/hello/1")
+                .get("/hello/1")
                 .then()
                 .statusCode(HttpStatus.SC_OK)
                 .body(containsString("Hello World!"));

@@ -4,11 +4,11 @@ import com.unosquare.cvgenerator.dao.HelloRepository;
 import com.unosquare.cvgenerator.exception.IdNotFoundException;
 import com.unosquare.cvgenerator.model.dto.GreetingDTO;
 import com.unosquare.cvgenerator.model.entity.Greeting;
+import com.unosquare.cvgenerator.util.MapperUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,7 +27,7 @@ public class GreetingServiceImplTest {
     private GreetingService greetingService;
 
     @Autowired
-    private ModelMapper modelMapper;
+    private MapperUtil mapperUtil;
 
     @MockBean
     private HelloRepository repository;
@@ -37,7 +37,7 @@ public class GreetingServiceImplTest {
         // arrange
         Greeting testGreeting = new Greeting(1, "Hello World!");
         when(repository.findById(1)).thenReturn(Optional.of(testGreeting));
-        GreetingDTO testGDTO = modelMapper.map(testGreeting, GreetingDTO.class);
+        GreetingDTO testGDTO = mapperUtil.map(testGreeting, GreetingDTO.class);
 
         // act
         GreetingDTO actualGDTO = greetingService.findById(1);
