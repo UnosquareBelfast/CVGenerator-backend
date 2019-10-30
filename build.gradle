@@ -28,21 +28,36 @@ repositories {
 }
 
 ext {
-	restAssuredVersion = '3.3.0'
+	restAssuredVersion = "3.3.0"
+	modelMapperVersion = "2.3.5"
+	h2databaseVersion = "1.4.199"
 }
 
 dependencies {
-	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-	compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	compile 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
-	integTestCompile("io.rest-assured:rest-assured:$restAssuredVersion")
-	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.5'
-	compile("com.h2database:h2:1.4.199")
+	// compile
+	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile ("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile ("org.springframework.boot:spring-boot-starter-web")
+	compile ("org.modelmapper:modelmapper:$modelMapperVersion")
+	compile ("com.h2database:h2:$h2databaseVersion")
+
+	// compileOnly
+	compileOnly ("org.projectlombok:lombok")
+
+	// runtimeOnly
+	runtimeOnly ("org.postgresql:postgresql")
+
+	// developmentOnly
+	developmentOnly ("org.springframework.boot:spring-boot-devtools")
+
+	// annotationProcessor
+	annotationProcessor ("org.projectlombok:lombok")
+
+	// testCompile
+	testCompile ("org.springframework.boot:spring-boot-starter-test")
+
+	// integTestCompile
+	integTestCompile ("io.rest-assured:rest-assured:$restAssuredVersion")
 }
 
 bootRun {
