@@ -37,13 +37,13 @@ public class GreetingServiceImplTest {
         // arrange
         Greeting testGreeting = new Greeting(1, "Hello World!");
         when(repository.findById(1)).thenReturn(Optional.of(testGreeting));
-        GreetingDTO testGMV = modelMapper.map(testGreeting, GreetingDTO.class);
+        GreetingDTO testGDTO = modelMapper.map(testGreeting, GreetingDTO.class);
 
         // act
-        GreetingDTO actualGMV = greetingService.findById(1);
+        GreetingDTO actualGDTO = greetingService.findById(1);
 
         // assert
-        Assert.assertEquals(testGMV, actualGMV);
+        Assert.assertEquals(testGDTO, actualGDTO);
         Mockito.verify(repository, times(1)).findById(1);
     }
 
