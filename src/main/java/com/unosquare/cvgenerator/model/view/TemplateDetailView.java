@@ -5,8 +5,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class GreetingView {
+public class TemplateDetailView {
 
-    private String greeting;
+    private Integer id;
+    private String templateName;
 
 }
