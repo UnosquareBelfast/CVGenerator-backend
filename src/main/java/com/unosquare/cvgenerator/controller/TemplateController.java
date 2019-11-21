@@ -1,7 +1,7 @@
 package com.unosquare.cvgenerator.controller;
 
-import com.unosquare.cvgenerator.model.view.UserView;
-import com.unosquare.cvgenerator.service.UserService;
+import com.unosquare.cvgenerator.model.view.TemplateDetailView;
+import com.unosquare.cvgenerator.service.TemplateService;
 import com.unosquare.cvgenerator.util.MapperUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/templates")
 @RequiredArgsConstructor
-public class UserController {
+public class TemplateController {
 
-    private final UserService userService;
+    private final TemplateService templateService;
     private final MapperUtil mapperUtil;
 
     @GetMapping
-    public ResponseEntity<List<UserView>> getUsers() {
-        List<UserView> resultListView = mapperUtil.map(userService.findAll(), UserView.class);
+    public ResponseEntity<List<TemplateDetailView>> getTemplates() {
+        List<TemplateDetailView> resultListView = mapperUtil.map(templateService.findAll(), TemplateDetailView.class);
         if (resultListView.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -30,9 +30,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserView> getUser(@PathVariable("id") Integer id) {
-        return userService.findById(id)
-                .map(result -> mapperUtil.map(result, UserView.class))
+    public ResponseEntity<TemplateDetailView> getTemplate(@PathVariable("id") Integer id) {
+        return templateService.findById(id)
+                .map(result -> mapperUtil.map(result, TemplateDetailView.class))
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }

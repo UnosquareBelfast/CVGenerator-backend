@@ -5,8 +5,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class GreetingDTO {
+public class TemplateDetailDTO {
 
-    private String greeting;
+    private Integer id;
+    private String templateName;
+    private String templateHtml;
 
 }
