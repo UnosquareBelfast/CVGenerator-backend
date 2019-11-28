@@ -1,9 +1,11 @@
 package com.unosquare.cvgenerator;
 
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -22,6 +24,9 @@ public abstract class AbstractWebIntegrationTest {
 
     @LocalServerPort
     private int port;
+
+    @Rule
+    public WireMockRule wireMockRule = new WireMockRule(8082);
 
     @Before
     public void setUpBase() {

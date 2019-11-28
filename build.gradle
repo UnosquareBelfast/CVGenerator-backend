@@ -31,20 +31,24 @@ ext {
 	restAssuredVersion = "3.3.0"
 	modelMapperVersion = "2.3.5"
 	h2databaseVersion = "1.4.200"
-	jsonSimpleVersion = "1.1.1"
 	jfixtureVersion = "2.7.2"
+	wireMockVersion = "2.25.1"
+	commonsLangVersion = "3.9"
+	jsoupVersion = "1.12.1"
+	flyingSaucerVersion = "9.1.19"
 }
 
 dependencies {
 	// compile
 	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
-	compile ("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile ("org.springframework.boot:spring-boot-starter-web")
 	compile ("org.projectlombok:lombok")
 	compile ("org.modelmapper:modelmapper:$modelMapperVersion")
 	compile ("com.h2database:h2:$h2databaseVersion")
-	compile ("com.googlecode.json-simple:json-simple:$jsonSimpleVersion")
 	compile ("com.flextrade.jfixture:jfixture:$jfixtureVersion")
+	compile ("org.apache.commons:commons-lang3:$commonsLangVersion")
+	compile ("org.jsoup:jsoup:$jsoupVersion")
+	compile ("org.xhtmlrenderer:flying-saucer-pdf-openpdf:$flyingSaucerVersion")
 
 	// runtimeOnly
 	runtimeOnly ("org.postgresql:postgresql")
@@ -57,6 +61,7 @@ dependencies {
 
 	// testCompile
 	testCompile ("org.springframework.boot:spring-boot-starter-test")
+	testCompile ("com.github.tomakehurst:wiremock-jre8:$wireMockVersion")
 
 	// integTestCompile
 	integTestCompile ("io.rest-assured:rest-assured:$restAssuredVersion")
